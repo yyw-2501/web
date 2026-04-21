@@ -90,25 +90,36 @@ function qiehuandenglu(){
 }
 
 function denglu(){
-  let yonghuming = document.getElementById('yonghuming').value;
-  let mima = document.getElementById('mima').value;
+  // 变量名改为全小写拼音
+  let yonghuming_shuru = document.getElementById('yonghuming').value;
+  let mima_shuru = document.getElementById('mima').value;
   
-  if(yonghuming && mima){
-    alert('登录成功！');
-    dengluanniu.textContent = yonghuming;
-    guanbitanchuang();
+  // 新增：从localStorage获取已注册的账号密码，变量名改为全小写拼音
+  let cunchu_de_yonghuming = localStorage.getItem('user');
+  let cunchu_de_mima = localStorage.getItem('pwd');
+  
+  if(yonghuming_shuru && mima_shuru){
+    // 新增：比对输入的账号密码与存储的是否一致
+    if(yonghuming_shuru === cunchu_de_yonghuming && mima_shuru === cunchu_de_mima){
+      alert('登录成功！');
+      dengluanniu.textContent = yonghuming_shuru;
+      guanbitanchuang();
+    } else {
+      alert('用户名或密码错误！');
+    }
   }else{
     alert('请输入账号密码！');
   }
 }
 
 function zhuce(){
-  let zhuceyonghu = document.getElementById('zhuceyonghu').value;
-  let zhucemima = document.getElementById('zhucemima').value;
+  // 变量名改为全小写拼音
+  let zhuce_yonghuming_shuru = document.getElementById('zhuceyonghu').value;
+  let zhuce_mima_shuru = document.getElementById('zhucemima').value;
   
-  if(zhuceyonghu && zhucemima){
-    localStorage.setItem('user', zhuceyonghu);
-    localStorage.setItem('pwd', zhucemima);
+  if(zhuce_yonghuming_shuru && zhuce_mima_shuru){
+    localStorage.setItem('user', zhuce_yonghuming_shuru);
+    localStorage.setItem('pwd', zhuce_mima_shuru);
     alert('注册成功！');
     qiehuandenglu();
   }else{
