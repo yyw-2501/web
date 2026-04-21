@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图书商城</title>
+    <link rel="stylesheet" href="css/lab3-计本2501-028-index.css">
+</head>
+<body>
+    <div class="box">
+        <div class="touming">
+        <div class="box1">
+            <ul>
+                <li><img src="img/R-C.png"></li>
+                <li id="dengluanniu">登录/注册</li>
+                <li>作者专区</li>
+                <li>排行榜</li>
+                <li>热门推荐</li>
+                <li>新书上架</li>
+                <li>图书分类</li>
+                <li>首页</li>
+            </ul>
+        </div></div>
+        <div class="box4">
+            <div class="box2">
+            <ul class="box2"><li>文学小说</li><li>社科历史</li><li>经管职场</li><li>科技计算机</li><li>少儿绘本</li><li>教辅考试</li><li>艺术设计</li><li>生活健康</li><li>外文原版</li><li>漫画绘本</li><li>网文出版</li></ul>
+            </div>
+            <div class="box3">
+                <div class="box6">
+                    <div class="box9-1"><a>图书展示区</a><br><img src="img/三国志.png"><a>三国志</a></div>
+                    <div class="box9"><img src="img/剑胆文心伴流年.png"><a>剑胆文心伴流年</a></div>
+                    <div class="box9"><img src="img/半小时漫画.png"><a>半小时漫画</a></div>
+                    <div class="box9"><img src="img/只对你温柔.png"><a>只对你温柔</a></div>
+                </div>
+                <div class="box7">
+                    <div class="box9-1"><a>热门推荐</a><br><img src="img/中国现代经典文学精选图书.png"><a>中国现代经典文学精选图书</a></div>
+                    <div class="box9"><img src="img/童年.png"><a>童年</a></div>
+                    <div class="box9"><img src="img/捕捉儿童敏感期.png"><a>捕捉儿童敏感期</a></div>
+                    <div class="box9"><img src="img/给女孩的身体书.png"><a>给女孩的身体书</a></div>
+                </div>
+                <div class="box8">
+                    <div class="box10-1"><a>新书上市</a><br><img src="img/唐伯虎.png"><a>唐伯虎</a></div>
+                    <div class="box10"><img src="img/正面管教.png"><a>正面管教</a></div>
+                    <div class="box10"><img src="img/诡异悬梯.png"><a>诡异悬梯</a></div>
+                    <div class="box10"><img src="img/背后的数字.png"><a>背后的数字</a></div>
+                </div>
+            </div>
+            <div class="box5">
+                <img src="img/广告.jpg">
+            </div>
+        </div>
+    </div>
+
+<div class="modal" id="tanchuang">
+  <div class="modal_box">
+    <span class="close" onclick="guanbitanchuang()">×</span>
+    <div id="denglukai">
+      <h3>登录</h3>
+      <input type="text" id="yonghuming" placeholder="用户名"><br>
+      <input type="password" id="mima" placeholder="密码"><br>
+      <button onclick="denglu()">登录</button>
+      <p>没有账号？<span class="link" onclick="qiehuanzhuce()">去注册</span></p>
+    </div>
+    <div id="zhucekai" style="display:none">
+      <h3>注册</h3>
+      <input type="text" id="zhuceyonghu" placeholder="用户名"><br>
+      <input type="password" id="zhucemima" placeholder="密码"><br>
+      <button onclick="zhuce()">注册</button>
+      <p>已有账号？<span class="link" onclick="qiehuandenglu()">去登录</span></p>
+    </div>
+  </div>
+</div>
+
+<script>
+const dengluanniu = document.getElementById('dengluanniu');
+
+dengluanniu.onclick = function(){
+  document.getElementById('tanchuang').style.display = 'block';
+}
+function guanbitanchuang(){
+  document.getElementById('tanchuang').style.display = 'none';
+}
+function qiehuanzhuce(){
+  document.getElementById('denglukai').style.display = 'none';
+  document.getElementById('zhucekai').style.display = 'block';
+}
+function qiehuandenglu(){
+  document.getElementById('zhucekai').style.display = 'none';
+  document.getElementById('denglukai').style.display = 'block';
+}
+
+function denglu(){
+  let yonghuming = document.getElementById('yonghuming').value;
+  let mima = document.getElementById('mima').value;
+  
+  if(yonghuming && mima){
+    alert('登录成功！');
+    dengluanniu.textContent = yonghuming;
+    guanbitanchuang();
+  }else{
+    alert('请输入账号密码！');
+  }
+}
+
+function zhuce(){
+  let zhuceyonghu = document.getElementById('zhuceyonghu').value;
+  let zhucemima = document.getElementById('zhucemima').value;
+  
+  if(zhuceyonghu && zhucemima){
+    localStorage.setItem('user', zhuceyonghu);
+    localStorage.setItem('pwd', zhucemima);
+    alert('注册成功！');
+    qiehuandenglu();
+  }else{
+    alert('请输入账号密码！');
+  }
+}
+</script>
+</body>
+</html>
